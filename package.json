@@ -1,0 +1,25 @@
+{
+  "name": "chupa-cabra",
+  "version": "1.0.0",
+  "description": "Javascript tool to get data from API and concatenate to a file.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raphaelduartepinheiro/chupa-cabra.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/raphaelduartepinheiro/chupa-cabra/issues"
+  },
+  "homepage": "https://github.com/raphaelduartepinheiro/chupa-cabra",
+  "dependencies": {
+    "chai": "^3.4.1"
+  }
+}
