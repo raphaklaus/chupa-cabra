@@ -32,7 +32,7 @@ describe('Validate URL', function(){
   });
 
   it('should NOT be valid URL using http', function(){
-    assert.equal(chupaCabra.validateURL('https://com'), false)
+    assert.equal(chupaCabra.validateURL('http://com'), false)
   });
 
   it('should NOT be valid URL without preffix', function(){
@@ -44,6 +44,20 @@ describe('Validate URL', function(){
   });    
 
   it('should be valid URL using a long url with query string', function(){
-    assert.equal(chupaCabra.validateURL('https://www.google.com.br/search?q=testing+frameworks+javascript&oq=testing+frameworks+javascript&aqs=chrome..69i57j0l5.3578j0j4&sourceid=chrome&es_sm=93&ie=UTF-8'), true)
-  });        
+    assert.equal(chupaCabra.validateURL('https://www.google.com/search?q=testing+frameworks+javascript&oq=testing+frameworks+javascript&aqs=chrome..69i57j0l5.3578j0j4&sourceid=chrome&es_sm=93&ie=UTF-8'), true)
+  });
+
+  describe('Check protocol', function(){
+    it('should be http', function(){
+      assert.equal(chupaCabra.isHttp('http://www.google.com'), true);
+    });
+
+    it('should be https', function(){
+      assert.equal(chupaCabra.isHttps('https://www.google.com'), true);
+    });   
+
+    it('should be http by default', function(){
+      assert.equal(chupaCabra.forceHttp('www.google.com'), 'http://www.google.com');
+    });    
+  })
 })
