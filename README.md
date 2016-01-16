@@ -1,2 +1,2 @@
 # chupa-cabra
-Javascript tool to get data from API and concatenate to a file.
+Javascript tool to automatically get data from API and concatenate to a file.
