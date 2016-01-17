@@ -137,35 +137,38 @@ var writeToFile = function(buffer){
 };
 
 prompt.get(questionsSequenceOne, function(err, result){
-  var url = result.url;
-  var fullBody = '';
+  if (result != undefined){
+    var url = result.url;
+    var fullBody = '';
 
-  checkUpdate({packageName: pkg.name, packageVersion: pkg.version, isCLI: true}, function(err, latestVersion, defaultMessage){
-      if(!err){
-          console.log(defaultMessage);
-      }
-  });  
-  
-  if (exports.expressionExists(url)){
-    var loop = getLoop(url);
-    var loopArray = doLoop(loop[0], loop[1], loop[2], url).then(function(){
-      var len = body.length;
-      body.forEach(function(content){
-        fullBody += content;
+    checkUpdate({packageName: pkg.name, packageVersion: pkg.version, isCLI: true}, function(err, latestVersion, defaultMessage){
+        if(!err){
+            console.log(defaultMessage);
+        }
+    });  
+    
+    if (exports.expressionExists(url)){
+      var loop = getLoop(url);
+      var loopArray = doLoop(loop[0], loop[1], loop[2], url).then(function(){
+        var len = body.length;
+        body.forEach(function(content){
+          fullBody += content;
+        });
+        
+        writeToFile(fullBody);
+        console.log('The loop was: '.green, loop)
       });
-      
-      writeToFile(fullBody);
-      console.log('The loop was: '.green, loop)
-    });
-  } else{
-    getBody(url).then(function(){
-      writeToFile(body[0]);
-    });
-  }
+    } else{
+      getBody(url).then(function(){
+        writeToFile(body[0]);
+      });
+    }
 
-  // TODO: Requests with intervals
-  // if (result.interval.match(/[Yy]/))
-  //   prompt.get(questionsSequenceTwo, function(err, result){
-  //     var seconds = result.seconds;
-  //   })
+    // TODO: Requests with intervals
+    // if (result.interval.match(/[Yy]/))
+    //   prompt.get(questionsSequenceTwo, function(err, result){
+    //     var seconds = result.seconds;
+    //   })
+    
+  }
 });
