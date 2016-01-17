@@ -23,6 +23,7 @@
   "homepage": "https://github.com/raphaelduartepinheiro/chupa-cabra",
   "dependencies": {
     "chai": "^3.4.1",
+    "check-update": "0.0.8",
     "prompt": "^0.2.14",
     "q": "^1.4.1"
   },
