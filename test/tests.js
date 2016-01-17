@@ -6,19 +6,19 @@ var assert = chai.assert;
 
 describe('Loop structure', function() {
     it('should return 0 to 5 by 1', function () {
-      assert.deepEqual(chupaCabra.doLoop(0,5,1), [0,1,2,3,4,5]);
+      assert.deepEqual(chupaCabra.generateLoop(0,5,1), [0,1,2,3,4,5]);
   });
 
     it('should return 0 to 10 by 2', function () {
-      assert.deepEqual(chupaCabra.doLoop(0,10,2), [0,2,4,6,8,10]);
+      assert.deepEqual(chupaCabra.generateLoop(0,10,2), [0,2,4,6,8,10]);
   });
 
     it('should return 0 to 11 by 4', function () {
-      assert.deepEqual(chupaCabra.doLoop(0,11,4), [0,4,8]);
+      assert.deepEqual(chupaCabra.generateLoop(0,11,4), [0,4,8]);
   });   
 
   it('should return 100 to 400 by 50', function () {
-      assert.deepEqual(chupaCabra.doLoop(100,400,50), [100,150,200,250,300,350,400]);
+      assert.deepEqual(chupaCabra.generateLoop(100,400,50), [100,150,200,250,300,350,400]);
   });        
 });
 
