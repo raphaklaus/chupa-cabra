@@ -1,6 +1,6 @@
 {
   "name": "chupa-cabra",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Javascript tool to get data from API and concatenate to a file.",
   "main":"./src/chupa-cabra.js",
   "directories": {},
