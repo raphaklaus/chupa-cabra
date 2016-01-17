@@ -2,7 +2,7 @@
   "name": "chupa-cabra",
   "version": "0.1.0",
   "description": "Javascript tool to get data from API and concatenate to a file.",
-  "bin":{
+  "bin": {
     "chupa-cabra": "src/chupa-cabra.js"
   },
   "directories": {
@@ -23,7 +23,8 @@
   "homepage": "https://github.com/raphaelduartepinheiro/chupa-cabra",
   "dependencies": {
     "chai": "^3.4.1",
-    "prompt": "^0.2.14"
+    "prompt": "^0.2.14",
+    "q": "^1.4.1"
   },
   "devDependencies": {
     "mocha": "^2.3.4"

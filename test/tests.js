@@ -46,18 +46,28 @@ describe('Validate URL', function(){
   it('should be valid URL using a long url with query string', function(){
     assert.equal(chupaCabra.validateURL('https://www.google.com/search?q=testing+frameworks+javascript&oq=testing+frameworks+javascript&aqs=chrome..69i57j0l5.3578j0j4&sourceid=chrome&es_sm=93&ie=UTF-8'), true)
   });
+});
 
-  describe('Check protocol', function(){
-    it('should be http', function(){
-      assert.equal(chupaCabra.isHttp('http://www.google.com'), true);
-    });
+describe('Check protocol', function(){
+  it('should be http', function(){
+    assert.equal(chupaCabra.isHttp('http://www.google.com'), true);
+  });
 
-    it('should be https', function(){
-      assert.equal(chupaCabra.isHttps('https://www.google.com'), true);
-    });   
+  it('should be https', function(){
+    assert.equal(chupaCabra.isHttps('https://www.google.com'), true);
+  });   
 
-    it('should be http by default', function(){
-      assert.equal(chupaCabra.forceHttp('www.google.com'), 'http://www.google.com');
-    });    
-  })
+  it('should be http by default', function(){
+    assert.equal(chupaCabra.forceHttp('www.google.com'), 'http://www.google.com');
+  });    
+});
+
+describe('Find expression of loop', function(){
+  it('should find expression', function(){
+    assert.equal(chupaCabra.expressionExists('http://www.google.com/page=[0,20,3]'), true)
+  });
+
+  it('should NOT find expression', function(){
+    assert.equal(chupaCabra.expressionExists('http://www.google.com/page=0'), false)
+  });    
 })
