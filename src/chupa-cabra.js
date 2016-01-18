@@ -69,8 +69,7 @@ var doLoop = function(from, to, by, url){
 };
 
 exports.validateURL = function(url){
-  var result = url.match(/(\w*\W*)?\w*(\.(\w)+)+(\W\d+)?(\/\w*(\W*\w)*)*/g);
-  return result != null ? true : false;
+  return url.match(/(\w*\W*)?\w*(\.(\w)+)+(\W\d+)?(\/\w*(\W*\w)*)*/g) != null;
 };
 
 // TODO: Requests with intervals
@@ -79,11 +78,11 @@ exports.validateURL = function(url){
 // };
 
 exports.isHttp = function(url){
-  return !!(url.match(/^http:\/\//) != null);
+  return url.match(/^http:\/\//) != null;
 };
 
 exports.isHttps = function(url){
-  return !!(url.match(/^https:\/\//) != null);
+  return url.match(/^https:\/\//) != null;
 };
 
 exports.forceHttp = function(url){
@@ -95,7 +94,7 @@ var getExpression = function(url){
 }
 
 exports.expressionExists = function(url){
-  return getExpression(url) != null ? true : false;
+  return getExpression(url) != null;
 }
 
 var getLoop = function(url){
