@@ -79,11 +79,11 @@ exports.validateURL = function(url){
 // };
 
 exports.isHttp = function(url){
-  return url.match(/http:\/\//) != null ? true : false;
+  return url.match(/^http:\/\//) != null ? true : false;
 };
 
 exports.isHttps = function(url){
-  return url.match(/https:\/\//) != null ? true : false;
+  return url.match(/^https:\/\//) != null ? true : false;
 };
 
 exports.forceHttp = function(url){
