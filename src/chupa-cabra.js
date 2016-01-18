@@ -69,7 +69,12 @@ var doLoop = function(from, to, by, url){
 };
 
 exports.validateURL = function(url){
-  return url.match(/(\w*\W*)?\w*(\.(\w)+)+(\W\d+)?(\/\w*(\W*\w)*)*/g) != null;
+  try{
+    return url.match(/(http(s)?:\/\/)?\w*(\.(\w)+)+(\W\d+)?(\/*\w*\W*)*/g)
+      .toString().length == url.length;
+  }catch(err){
+    return false;
+  }
 };
 
 // TODO: Requests with intervals
