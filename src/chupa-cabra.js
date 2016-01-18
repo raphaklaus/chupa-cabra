@@ -62,7 +62,7 @@ var doLoop = function(from, to, by, url){
 
   loop.forEach(function(n){
     url = originalUrl.replace(/\[\d*,\d*,\d*\]/, n);
-    promises.push(getBody(url));    
+    promises.push(getBody(url));
   })
 
   return Q.allSettled(promises); 
