@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/raphaklaus/chupa-cabra.png)](https://travis-ci.org/raphaklaus/chupa-cabra)
+
 # chupa-cabra
 Javascript tool to automatically get body's content from HTTP/HTTPS request and concatenate to a file.
 
