@@ -22,3 +22,5 @@ In this case from 0 to 1000 incremented by 100. The JSON result will be appended
 ##### 2) Or single URL
     https://www.google.com
 Gets the HTML content for just this page. 
+
+Todo: Check the issues!
