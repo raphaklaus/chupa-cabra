@@ -42,7 +42,7 @@ var getBody = function (url) {
     doRequest(https, url, partialBody, body, index, deferred);
   } else {
     url = exports.forceHttp(url);
-    doRequest(http, url, partialBody, body, index, deferred);  
+    doRequest(http, url, partialBody, body, index, deferred);
   }
 
   return deferred.promise;
@@ -67,7 +67,7 @@ var doLoop = function (from, to, by, url) {
     promises.push(getBody(url));
   });
 
-  return Q.allSettled(promises); 
+  return Q.allSettled(promises);
 };
 
 exports.validateURL = function (url) {
@@ -107,7 +107,7 @@ exports.expressionExists = function (url) {
 var getLoop = function (url) {
   var result = getExpression(url).toString().replace(/\[|\]/g, '').split(',');
   result = [parseInt(result[0]), parseInt(result[1]), parseInt(result[2])];
-  
+
   return result;
 };
 
@@ -152,18 +152,18 @@ prompt.get(questionsSequenceOne, function (err, result) {
         if (!err) {
           console.log(defaultMessage);
         }
-    });  
-    
+    });
+
     if (exports.expressionExists(url)) {
       var loop = getLoop(url);
-      
+
       // var loopArray = doLoop(loop[0], loop[1], loop[2], url).then(function () { --never used yet--
       doLoop(loop[0], loop[1], loop[2], url).then(function () {
         // var len = body.length; --never used yet--
         body.forEach(function (content) {
           fullBody += content;
         });
-        
+
         writeToFile(fullBody);
         console.log('The loop was: '.green, loop);
       });
