@@ -2,12 +2,12 @@
   "name": "chupa-cabra",
   "version": "0.2.5",
   "description": "Javascript tool to get data from API and concatenate to a file.",
-  "bin":{
+  "bin": {
     "chupa-cabra": "./src/chupa-cabra.js"
   },
   "directories": {},
   "scripts": {
-    "test": "mocha"
+    "test": "mocha --compilers js:babel-core/register"
   },
   "repository": {
     "type": "git",
@@ -26,9 +26,12 @@
     "q": "^1.4.1"
   },
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-es2016": "^6.24.1",
     "mocha": "^2.3.4"
   },
-  "engines":{
+  "engines": {
     "node": ">=0.8.0"
   },
   "preferGlobal": true
