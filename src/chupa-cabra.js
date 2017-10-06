@@ -1,21 +1,18 @@
 #!/usr/bin/env node
-'use strict';
-
-var Q           = require('q'),
-    fs          = require('fs'),
-    http        = require('http'),
-    https       = require('https'),
-    prompt      = require('prompt'),
-    checkUpdate = require('check-update'),
-    pkg         = require('../package.json');
+import Q from 'q';
+import fs from 'fs';
+import http from 'http';
+import prompt from 'prompt';
+import checkUpdate from 'check-update';
+import pkg from '../package.json';
 
 prompt.start();
 prompt.message = '';
 prompt.delimiter = '\"'.magenta;
 
-var body = [];
+const body = [];
 
-var doRequest = function (protocol, url, partialBody, body, index, deferred) {
+const doRequest = function (protocol, url, partialBody, body, index, deferred) {
   protocol.get(url, function (res) {
     res.setEncoding('utf8');
     res.on('data', function (chunk) {
@@ -29,8 +26,8 @@ var doRequest = function (protocol, url, partialBody, body, index, deferred) {
   });
 };
 
-var getBody = function (url) {
-  var deferred = Q.defer(),
+const getBody = function (url) {
+  const deferred = Q.defer(),
       partialBody = '',
       index = body.length;
 
@@ -49,16 +46,16 @@ var getBody = function (url) {
 };
 
 exports.generateLoop = function (from, to, by) {
-  var result = [];
-  for (var i = from; i <= to; i += by) {
+  const result = [];
+  for (let i = from; i <= to; i += by) {
     result.push(i);
   }
 
   return result;
 };
 
-var doLoop = function (from, to, by, url) {
-  var originalUrl = url,
+const doLoop = function (from, to, by, url) {
+  const originalUrl = url,
       promises = [],
       loop = exports.generateLoop(from, to, by);
 
@@ -96,7 +93,7 @@ exports.forceHttp = function (url) {
   return 'http://' + url;
 };
 
-var getExpression = function (url) {
+const getExpression = function (url) {
   return url.match(/\[\d*,\d*,\d*\]/);
 };
 
@@ -104,14 +101,14 @@ exports.expressionExists = function (url) {
   return getExpression(url) !== null;
 };
 
-var getLoop = function (url) {
-  var result = getExpression(url).toString().replace(/\[|\]/g, '').split(',');
+const getLoop = function (url) {
+  let result = getExpression(url).toString().replace(/\[|\]/g, '').split(',');
   result = [parseInt(result[0]), parseInt(result[1]), parseInt(result[2])];
 
   return result;
 };
 
-var questionsSequenceOne = [{
+const questionsSequenceOne = [{
     name: 'url',
     description: 'Please, enter the URL endpoint you want to dump',
     required: true,
@@ -131,13 +128,13 @@ var questionsSequenceOne = [{
 ];
 
 // TODO: Requests with intervals
-// var questionsSequenceTwo = {
+// const questionsSequenceTwo = {
 //   name: 'seconds',
 //   description: 'Enter the interval in seconds',
 //   default: 20
 // };
 
-var writeToFile = function (buffer) {
+const writeToFile = function (buffer) {
   fs.writeFile('dump_' + Date.parse(new Date()) + '.txt', buffer, function () {
     console.log('dump.txt generated succesfully!'.green);
   });
@@ -145,8 +142,8 @@ var writeToFile = function (buffer) {
 
 prompt.get(questionsSequenceOne, function (err, result) {
   if (result !== undefined) {
-    var url = result.url,
-        fullBody = '';
+    const url = result.url;
+    let fullBody = '';
 
     checkUpdate({packageName: pkg.name, packageVersion: pkg.version, isCLI: true}, function (err, latestVersion, defaultMessage) {
         if (!err) {
@@ -155,11 +152,11 @@ prompt.get(questionsSequenceOne, function (err, result) {
     });
 
     if (exports.expressionExists(url)) {
-      var loop = getLoop(url);
+      const loop = getLoop(url);
 
-      // var loopArray = doLoop(loop[0], loop[1], loop[2], url).then(function () { --never used yet--
+      // const loopArray = doLoop(loop[0], loop[1], loop[2], url).then(function () { --never used yet--
       doLoop(loop[0], loop[1], loop[2], url).then(function () {
-        // var len = body.length; --never used yet--
+        // const len = body.length; --never used yet--
         body.forEach(function (content) {
           fullBody += content;
         });
@@ -176,7 +173,7 @@ prompt.get(questionsSequenceOne, function (err, result) {
     // TODO: Requests with intervals
     // if (result.interval.match(/[Yy]/))
     //   prompt.get(questionsSequenceTwo, function(err, result){
-    //     var seconds = result.seconds;
+    //     const seconds = result.seconds;
     //   })
   }
 });
